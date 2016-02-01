@@ -13,3 +13,12 @@ shift x n
 
 unCeaser :: String -> Int -> String
 unCeaser l n = ceaser l (-n)
+
+main :: IO ()
+main = do
+    putStr "Please enter the input string: "
+    input <- getLine
+    putStr "\n"
+    putStr "Please enter the shift number: "
+    n <- getLine
+    putStrLn (ceaser input (read n))

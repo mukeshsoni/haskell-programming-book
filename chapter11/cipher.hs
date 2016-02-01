@@ -26,3 +26,12 @@ vignere' (x:xs) key index
     | otherwise =
         let n = findCeaserN key index 'a' in
             shift x n : vignere' xs key (nextIndex index x)
+
+main :: IO ()
+main = do
+    putStr "Please enter the input string: "
+    input <- getLine
+    putStr "\n"
+    putStr "Please enter the keyword: "
+    keyword <- getLine
+    putStrLn (vignere input keyword)
