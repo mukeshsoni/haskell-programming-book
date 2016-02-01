@@ -79,10 +79,10 @@ handleGuess puzzle guess = do
   putStrLn $ "Your guess was: " ++ [guess]
   case (charInWord puzzle guess, alreadyGuessed puzzle guess) of
     (_, True) -> do
-      putStrLn ("You already guessed that character, pick another one" ++ attemptsLeft puzzle)
+      putStrLn ("You already guessed that character, pick another one. Attempts left: " ++ attemptsLeft puzzle)
       return puzzle
     (True, _) -> do
-      putStrLn ("This character was in the word. Well done!" ++ attemptsLeft puzzle)
+      putStrLn ("This character was in the word. Well done! Attempts left: " ++ attemptsLeft puzzle)
       return (fillInCharacter puzzle guess)
     (False, _) -> do
       putStrLn ("This character is not in the puzzle word. Attempts left: " ++ attemptsLeft puzzle)
