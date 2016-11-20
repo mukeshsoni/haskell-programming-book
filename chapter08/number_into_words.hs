@@ -25,4 +25,4 @@ digits n = go n []
             | otherwise = go (div n 10) ((mod n 10) : xs)
 
 wordNumber :: Int -> String 
-wordNumber n = concat . (intersperse "-") . (map digitToWord) . digits $ n
+wordNumber = concat . (intersperse "-") . (map digitToWord) . digits
