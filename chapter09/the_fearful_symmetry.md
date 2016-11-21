@@ -51,3 +51,9 @@ split'' s separator = go s []
       | length s == 0 = l
       | otherwise = go ((drop 1) $ dropWhile (/= separator) s) (l ++ [takeWhile (/= separator) s])
 ```
+
+3. Now let’s look at what those two functions have in common. Try writing a new function that parameterizes the character you’re breaking the string argument on and rewrite myWords and myLines using it.
+
+**Ans**
+
+Already did that as answer to question (2)
