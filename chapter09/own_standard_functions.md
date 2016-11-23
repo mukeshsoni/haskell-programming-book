@@ -125,3 +125,38 @@ squishAgain = undefined
 squishAgain :: [[a]] -> [a]
 squishAgain l = squishMap (\x -> x) l
 ```
+
+8. myMaximumBy takes a comparison function and a list and returns the greatest element of the list based on the last value that the comparison returned GT for. If you import maximumBy from `Data.List`, you’ll see the type is:
+```haskell
+Foldable t => (a -> a -> Ordering) -> t a -> a
+```
+
+rather than
+
+```haskell
+(a -> a -> Ordering) -> [a] -> a
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy = undefined
+Prelude> let xs = [1, 53, 9001, 10]
+Prelude> myMaximumBy compare xs
+9001
+```
+
+9. `myMinimumBy` takes a comparison function and a list and returns the least element of the list based on the last value that the
+comparison returned LT for.
+```haskell
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy = undefined
+Prelude> let xs = [1, 53, 9001, 10]
+Prelude> myMinimumBy compare xs
+1
+```
+
+Using the `myMinimumBy` and `myMaximumBy` functions, write your own versions of maximum and minimum. If you have GHC 7.10 or newer,
+you’ll see a type constructor that wants a Foldable instance instead of a list as has been the case for many functions so far.
+```haskell
+myMaximum :: (Ord a) => [a] -> a
+myMaximum = undefined
+myMinimum :: (Ord a) => [a] -> a
+myMinimum = undefined
+```
