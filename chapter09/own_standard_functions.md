@@ -142,6 +142,18 @@ Prelude> myMaximumBy compare xs
 9001
 ```
 
+**Ans**
+```haskell
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ [] = error "cannot operate on empty list"
+myMinimumBy f (x:xs) = go f xs x
+  where
+    go _ [] m = m
+    go f (x:xs) m
+      | f x m == GT = go f xs x
+      | otherwise = go f xs m
+```
+
 9. `myMinimumBy` takes a comparison function and a list and returns the least element of the list based on the last value that the
 comparison returned LT for.
 ```haskell
@@ -152,11 +164,31 @@ Prelude> myMinimumBy compare xs
 1
 ```
 
-Using the `myMinimumBy` and `myMaximumBy` functions, write your own versions of maximum and minimum. If you have GHC 7.10 or newer,
-you’ll see a type constructor that wants a Foldable instance instead of a list as has been the case for many functions so far.
+**Ans**
+```haskell
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ [] = error "cannot operate on empty list"
+myMinimumBy f (x:xs) = go f xs x
+  where
+    go _ [] m = m
+    go f (x:xs) m
+      | f x m == LT = go f xs x
+      | otherwise = go f xs m
+```
+
+Using the `myMinimumBy` and `myMaximumBy` functions, write your own versions of maximum and minimum. If you have GHC 7.10 or newer, you’ll see a type constructor that wants a Foldable instance instead of a list as has been the case for many functions so far.
 ```haskell
 myMaximum :: (Ord a) => [a] -> a
 myMaximum = undefined
 myMinimum :: (Ord a) => [a] -> a
 myMinimum = undefined
+```
+
+**Ans**
+```haskell
+myMaximum :: (Ord a) => [a] -> a
+myMaximum = myMaximumBy compare
+
+myMinimum :: (Ord a) => [a] -> a
+myMinimum = myMinimumBy compare
 ```
