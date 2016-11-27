@@ -65,3 +65,35 @@ filterDbNumber dbItems = foldr go [] dbItems
         (DbNumber num) -> num : acc
         otherwise -> acc
 ```
+
+3. Write a function that gets the most recent date.
+```haskell
+mostRecent :: [DatabaseItem] -> UTCTime
+mostRecent = undefined
+```
+
+**Ans**
+```haskell
+import Data.List (sort)
+
+mostRecent :: [DatabaseItem] -> UTCTime
+mostRecent = last . sort . filterDbDate
+```
+
+4. Write a function that sums all of the DbNumber values.
+```haskell
+-- You'll probably need to use fromIntegral
+-- to get from Integer to Double
+
+avgDb :: [DatabaseItem] -> Double
+avgDb = undefined
+```
+
+**Ans**
+```haskell
+avgDb :: [DatabaseItem] -> Double
+avgDb dbItems = sumNumbers / (fromIntegral totalNumbers)
+  where
+      sumNumbers = sum . map (fromIntegral) . filterDbNumber $ dbItems
+      totalNumbers = length . filterDbNumber $ dbItems
+```
