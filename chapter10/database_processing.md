@@ -82,6 +82,18 @@ mostRecent = last . sort . filterDbDate
 
 4. Write a function that sums all of the DbNumber values.
 ```haskell
+sumDb :: [DatabaseItem] -> Integer
+sumDb = undefined
+```
+
+**Ans**
+```haskell
+sumDb :: [DatabaseItem] -> Integer
+sumDb = sum . map (fromIntegral) . filterDbNumber
+```
+
+5. 
+```haskell
 -- You'll probably need to use fromIntegral
 -- to get from Integer to Double
 
