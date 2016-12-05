@@ -42,7 +42,7 @@ Hence `funcQuad` can have `4^4 == 256` different forms.
 
 **Ans**
 
-`gTwo` is a function whose cardinality will be 2^(2^2) == 2^4 == 16.
+`gTwo` is a function whose cardinality will be (2^2)^2 == 4^2 == 16.
 
 6. `fTwo :: Bool -> Quad -> Quad`
 
