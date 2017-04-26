@@ -8,6 +8,9 @@ import System.Environment (getArgs)
 import System.Exit (exitFailure, exitSuccess)
 import System.IO (isEOF, hGetLine, hIsEOF, stdin)
 
+f :: Char -> Int
+f x = x + 1
+
 main :: IO ()
 main = do
     mode <- getArgs
@@ -34,9 +37,8 @@ convertToMorse = forever $ do
         convertLine line = do
             let morse = stringToMorse line
             case morse of
-                (Just str)
-                    -> putStrLn (unwords str)
-                Nothing -> do
+                (Just str) -> putStrLn (unwords str)
+                Nothing    -> do
                     putStrLn $ "Error: " ++ line
                     exitFailure
 
@@ -53,7 +55,7 @@ convertFromMorse = forever $ do
                 decoded = traverse morseToChar (words morse)
             case decoded of
                 (Just str) -> putStrLn str
-                Nothing -> do
+                Nothing    -> do
                     putStrLn $ "Error: " ++ morse
                     exitFailure
 
