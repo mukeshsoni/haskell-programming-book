@@ -1,13 +1,13 @@
 name:                morse
 version:             0.1.0.0
-synopsis:            Initial project template from stack
-description:         Please see README.md
+-- synopsis:
+-- description:
 homepage:            https://github.com/githubuser/morse#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Author name here
 maintainer:          example@example.com
-copyright:           2016 Author name here
+copyright:           2017 Author name here
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
@@ -15,16 +15,20 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     Morse
   build-depends:       base >= 4.7 && < 5
+                     , containers
+                     , QuickCheck
   default-language:    Haskell2010
 
-executable morse-exe
+executable morse
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , morse
+                     , containers
+                     , QuickCheck
   default-language:    Haskell2010
 
 test-suite morse-test
@@ -33,6 +37,8 @@ test-suite morse-test
   main-is:             Spec.hs
   build-depends:       base
                      , morse
+                     , containers
+                     , QuickCheck
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 
