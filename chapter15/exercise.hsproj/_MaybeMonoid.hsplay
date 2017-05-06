@@ -1,0 +1,6 @@
+-- Haskell Playground 1.0
+mappend (Only (Sum 1)) (Only (Sum 3))
+
+mappend mempty (Only (Sum 1))
+
+mappend (Only (Sum 1)) mempty 

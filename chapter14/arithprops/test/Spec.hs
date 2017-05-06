@@ -23,6 +23,10 @@ prop_mulCommutative x y =
 prop_powerAssociative x y z =
     x ^ (y ^ z) == (x ^ y) ^ z
 
+f :: (Num a) => [a] -> a
+f [] = 1
+f (x:xs) = 1
+
 main :: IO ()
 main = do
     quickCheck (prop_half :: Float -> Bool)
