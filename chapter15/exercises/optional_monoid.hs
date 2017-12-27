@@ -1,5 +1,3 @@
-module MaybeMonoid where
-  
 import Data.Monoid
 
 data Optional a = 
@@ -14,4 +12,3 @@ instance Monoid a => Monoid (Optional a) where
   mappend Nada a = a
   mappend (Only a) (Only b) =
     Only (mappend a b)
-    
