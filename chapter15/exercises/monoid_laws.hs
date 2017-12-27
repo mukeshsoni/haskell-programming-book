@@ -23,5 +23,9 @@ instance Monoid Bull where
     mempty = Fools
     mappend _ _ = Fools
 
-main = 
+main = do
     quickCheck (monoidAssoc :: String -> String -> String -> Bool)
+    quickCheck (monoidLeftIdentity :: String -> Bool)
+    quickCheck (monoidRightIdentity :: String -> Bool)
+    quickCheck (monoidAssoc :: Bull -> Bull -> Bull -> Bool)
+    quickCheck (monoidRightIdentity :: Bull -> Bool)
