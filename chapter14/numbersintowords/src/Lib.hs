@@ -1,9 +1,10 @@
 module Lib where
 
-import Data.List (intersperse)
+import           Data.List (intercalate)
+
 
 digitToWord :: Int -> String
-digitToWord n = 
+digitToWord n =
     case n of
         0 -> "Zero"
         1 -> "One"
@@ -15,14 +16,14 @@ digitToWord n =
         7 -> "Seven"
         8 -> "Eight"
         9 -> "Nine"
-        otherwise -> "Only single digits supported"
+        _ -> "Only single digits supported"
 
 digits :: Int -> [Int]
 digits n = go n []
     where
-        go n xs
-            | n < 10 = n : xs
-            | otherwise = go (div n 10) ((mod n 10) : xs)
+        go num xs
+            | num < 10 = num : xs
+            | otherwise = go (div num 10) (mod num 10 : xs)
 
-wordNumber :: Int -> String 
-wordNumber = concat . (intersperse "-") . (map digitToWord) . digits
+wordNumber :: Int -> String
+wordNumber = intercalate "-" . map digitToWord . digits
