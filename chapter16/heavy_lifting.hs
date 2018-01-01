@@ -16,8 +16,30 @@ b = (fmap . fmap) (++ "lol") (Just ["Hi", "Hello"])
 -- Preluce> c 1
 -- -2
 -- Solution Note - This one is tricky since the fmap is happening over the function functor (yes, no typo there)
+c :: Integer -> Integer
 c = fmap (*2) (\x -> x - 2)
 
+-- 4. d = ((return "1" ++) . show) (\x -> [x, 1..3]) 
+-- Prelude> d 0
+-- 1[0, 1, 2, 3]
+d :: Integer -> String
+d = fmap (("1" ++) . show) (\x -> [x, 1..3])
+
+-- 5. e :: IO Integer
+-- e = let ioi = readIO "1" :: IO Integer
+--         changed = read ("123" ++) show ioi
+--     in (*3) changed
+-- Prelude> e
+-- 3693
+e :: IO Integer
+e = let ioi = (readIO "1" :: IO Integer)
+        changed = fmap (read . ("123" ++) . show) ioi
+    in fmap (*3) changed
+
+main :: IO Integer
 main = do
-    putStrLn (show a)
-    putStrLn (show b)
+    print a
+    print b
+    print (c 1)
+    print (d 0)
+    e
