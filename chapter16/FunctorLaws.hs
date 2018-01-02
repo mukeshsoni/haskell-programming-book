@@ -1,3 +1,5 @@
+module FunctorLaws where
+
 import Test.QuickCheck
 import Test.QuickCheck.Function
 
