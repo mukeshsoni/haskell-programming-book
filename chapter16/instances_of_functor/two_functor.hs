@@ -1,4 +1,5 @@
 import Test.QuickCheck
+import Test.QuickCheck.Function
 import FunctorLaws
 
 data Two a b = Two a b deriving (Eq, Show)

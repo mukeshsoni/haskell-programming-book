@@ -1,4 +1,5 @@
 import Test.QuickCheck
+import Test.QuickCheck.Function
 import FunctorLaws
 
 newtype Identity a = Identity a deriving (Eq, Show)

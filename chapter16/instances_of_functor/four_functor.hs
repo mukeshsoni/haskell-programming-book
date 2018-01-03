@@ -1,4 +1,5 @@
 import Test.QuickCheck
+import Test.QuickCheck.Function
 import FunctorLaws
 
 data Four a b c d = Four a b c d deriving (Eq, Show)

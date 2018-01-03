@@ -1,4 +1,5 @@
 import Test.QuickCheck
+import Test.QuickCheck.Function
 import FunctorLaws
 
 data Three a b c = Three a b c deriving (Eq, Show)
