@@ -9,7 +9,6 @@ data List a =
 
 instance Functor List where
     fmap _ Nil = Nil
-    fmap f (Cons a Nil) = Cons (f a) Nil 
     fmap f (Cons a l) = Cons (f a) (fmap f l)
 
 type Size = Int
