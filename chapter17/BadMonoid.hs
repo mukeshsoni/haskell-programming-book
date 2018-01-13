@@ -1,3 +1,5 @@
+-- assumes you installed `checkers` library globally using `stack checkers`
+-- use `stack ghci` instead of `ghci` to test out the program
 module BadMonoid where
 
 import Data.Monoid
@@ -18,6 +20,6 @@ instance Monoid Bull where
     mempty = Fools
     mappend _ _ = Fools
 
-instance EqProp Bull where (=-=) = Eq
+instance EqProp Bull where (=-=) = eq
 
 main = quickBatch (monoid Twoo)
