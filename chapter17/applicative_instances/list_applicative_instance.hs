@@ -5,15 +5,28 @@ data List a =
   | Cons a (List a)
   deriving (Eq, Show)
 
+append :: List a -> List a -> List a
+append Nil l2 = l2
+append l1 Nil = l1
+append (Cons a xs1) l2 = Cons a (append xs1 l2)
+
+fold :: (a -> b -> b) -> b -> List a -> b
+fold _ b Nil = b
+fold f b (Cons a xs) = f a (fold f b xs) 
+
+concat' :: List (List a) -> List a
+concat' = fold append Nil
+
 instance Monoid (List a) where
     mempty = Nil
-    mappend Nil l2 = l2
-    mappend l1 Nil = l1
-    mappend (Cons a xs1) l2 = Cons a (mappend xs1 l2)
+    mappend = append
 
 instance Functor List where
     fmap f Nil = Nil
     fmap f (Cons a xs) = Cons (f a) (fmap f xs)
+
+flatMap :: (a -> List b) -> List a -> List b
+flatMap f l = concat' $ fmap f l
 
 -- Anything which involves recursive implementation takes me some time to think
 -- :grimacing:
