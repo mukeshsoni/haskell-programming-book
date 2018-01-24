@@ -42,4 +42,3 @@ meh (x:xs) f = do
 -- Hint: reuse 'meh'
 -- flipType :: Monad m => [m a] -> m [a]
 flipType l = meh l id
-
