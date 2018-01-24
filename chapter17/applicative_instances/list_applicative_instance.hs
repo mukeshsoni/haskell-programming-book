@@ -36,7 +36,7 @@ flatMap f l = concat' $ fmap f l
 -- append the list with the result of applicative (<*>) application of rest of the functions in 
     -- first list to the second list
 instance Applicative List where
-    pure _ = Nil
+    pure a = Cons a Nil
     (<*>) Nil _ = Nil
     (<*>) _ Nil = Nil
     (<*>) (Cons fn xsFn) l = fmap fn l <> (xsFn <*> l)
