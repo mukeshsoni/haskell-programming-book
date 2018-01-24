@@ -1,3 +1,4 @@
+-- TODO - write quickcheck laws using checkers library
 data Optional e a =
     Nope e
   | Yes a
