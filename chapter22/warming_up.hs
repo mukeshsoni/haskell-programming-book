@@ -11,3 +11,6 @@ composed = rev . cap
 
 fmapped :: [Char] -> [Char]
 fmapped = fmap rev cap
+
+tupled :: [Char] -> ([Char], [Char])
+tupled = (,) <$> rev <*> cap
