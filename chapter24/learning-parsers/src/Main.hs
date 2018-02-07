@@ -68,4 +68,4 @@ main = do
   pNL "oneTwoThreeString'"
   testString' $ choice [oneTwoThreeString, oneTwoString, oneString]
   pNL "oneTwoThreeChar'"
-  testString' $ choice [one >> two >> three, one >> two, one]
+  testParse $ choice [one >> two >> three, one >> two, one]
