@@ -15,6 +15,7 @@ import Text.RawString.QQ
 import Text.Trifecta
 
 
+-- Example string to test our header parser
 headerEx :: String
 headerEx = "[blah]"
 
@@ -27,6 +28,7 @@ parseBracketPair p = char '[' *> p <* char ']'
 parseHeader :: Parser Header
 parseHeader = parseBracketPair (Header <$> some letter)
 
+-- Example string to test our assignment parser
 assignmentEx :: String
 assignmentEx = "name=person"
 
@@ -45,9 +47,11 @@ parseAssignment = do
   skipEOL
   return (name, value)
 
+-- Example string to test our comment parser
 commentEx :: String
 commentEx = "; comment on ini files looks like this"
 
+-- Example string to test our assignment parser
 commentEx' :: String
 commentEx' = "; also; like this;"
 
@@ -59,6 +63,7 @@ skipComments =
               skipEOL
             )
 
+-- Example string to test our section parser
 sectionEx :: String
 sectionEx = [r|
 ; ignore me
@@ -66,6 +71,7 @@ sectionEx = [r|
 donut=happy
 |]
 
+-- A slightly more complex section example. Stress that section.
 sectionEx' :: String
 sectionEx' = [r|
 ; example 2
@@ -110,6 +116,12 @@ maybeSuccess :: Result a -> Maybe a
 maybeSuccess (Success a) = Just a
 maybeSuccess _ = Nothing
 
+-- We can go ahead and test all the above parsers in ghci/repl
+-- with the given example strings or any other strings which constitutes a valid
+-- ini file
+-- But we can also test the whole thing by writing tests using the example strings
+-- The tests, of course, are also persistent and can be run later to verify a 
+-- refactoring or other changes
 main :: IO ()
 main = hspec $ do
   describe "Assignment pairings" $
