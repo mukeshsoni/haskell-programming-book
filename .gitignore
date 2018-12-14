@@ -16,3 +16,4 @@ cabal.sandbox.config
 *.hp
 .stack-work/
 chapter 19/shawty/dump.rdb
+.DS_Store

@@ -21,3 +21,7 @@ executable parsing-ini-config-files
                      , trifecta
                      , parsers
                      , raw-strings-qq
+                     , bytestring
+                     , hspec
+                     , containers
+                     , text
