@@ -17,3 +17,12 @@ instance (Monad m)
       (a, s'') <- sma s
       return (f a, s'')
     )
+
+
+instance (Monad m)
+  => Monad (StateT s m) where
+  return = pure
+  (>>=) (StateT ma) f = StateT $ (\s -> do
+      (a, s') <- ma s
+      runStateT (f a) s' 
+    )
